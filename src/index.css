@@ -1,0 +1,137 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  body {
+    @apply font-sans text-navy bg-white antialiased;
+    font-feature-settings: "ss01", "cv11";
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-display tracking-tight;
+  }
+  ::selection {
+    @apply bg-gold/30 text-navy;
+  }
+}
+
+@layer components {
+  .container-x {
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold tracking-wide transition-all duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2;
+  }
+  .btn-primary {
+    @apply btn bg-navy text-white shadow-soft hover:shadow-elevated hover:-translate-y-0.5 hover:bg-navy-600;
+  }
+  .btn-gold {
+    @apply btn bg-gold text-navy shadow-gold hover:-translate-y-0.5 hover:bg-gold-400;
+  }
+  .btn-outline {
+    @apply btn border border-navy/15 bg-white text-navy hover:border-gold hover:text-navy hover:shadow-soft;
+  }
+  .btn-ghost {
+    @apply btn text-navy/80 hover:text-navy hover:bg-navy/5;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white shadow-soft border border-navy/5 transition-all duration-300;
+  }
+  .card-hover {
+    @apply hover:-translate-y-1 hover:shadow-elevated hover:border-gold/40;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold tracking-wide;
+  }
+  .badge-gold {
+    @apply badge bg-gold/15 text-gold-700 ring-1 ring-gold/30;
+  }
+  .badge-navy {
+    @apply badge bg-navy/10 text-navy ring-1 ring-navy/15;
+  }
+  .badge-success {
+    @apply badge bg-emerald-50 text-emerald-700 ring-1 ring-emerald-200;
+  }
+
+  .gold-divider {
+    @apply h-px w-full bg-gold-line;
+  }
+
+  .eyebrow {
+    @apply text-xs font-semibold uppercase tracking-[0.22em] text-gold-700;
+  }
+
+  .input {
+    @apply w-full rounded-xl border border-navy/15 bg-white px-4 py-3 text-sm text-navy placeholder:text-navy/40 transition-all duration-200 focus:border-gold focus:outline-none focus:ring-2 focus:ring-gold/30;
+  }
+  .label {
+    @apply mb-1.5 block text-xs font-semibold uppercase tracking-[0.18em] text-navy/70;
+  }
+
+  .ring-gold-glow {
+    box-shadow:
+      0 0 0 4px rgba(201, 168, 76, 0.15),
+      0 14px 30px -12px rgba(201, 168, 76, 0.5);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(26, 39, 68, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(26, 39, 68, 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+  .bg-grid-light {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+  .mask-fade-b {
+    mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 60%, transparent 100%);
+  }
+}
+
+/* Hide default number input arrows */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #f6f7fb;
+}
+::-webkit-scrollbar-thumb {
+  background: #c5cdda;
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #1a2744;
+}
