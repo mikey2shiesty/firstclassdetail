@@ -22,3 +22,6 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Source asset kept locally; canonical copy lives in public/logo.png
+reallogo.png

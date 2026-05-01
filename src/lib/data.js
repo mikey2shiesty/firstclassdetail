@@ -186,7 +186,7 @@ export const STATS = [
 ];
 
 export const HERO_IMAGE =
-  "https://images.unsplash.com/photo-1605164599901-db7f68c4b1a4?auto=format&fit=crop&w=2000&q=80";
+  "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=2000&q=80";
 export const SECONDARY_IMAGE =
   "https://images.unsplash.com/photo-1601362840469-51e4d8d58785?auto=format&fit=crop&w=1600&q=80";
 export const INTERIOR_IMAGE =
@@ -231,7 +231,7 @@ export const MOCK_HISTORY = [
     price: 120,
     status: "Completed",
     before:
-      "https://images.unsplash.com/photo-1517524008697-bbe2a0d24a26?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1583121274602-3e2820c69888?auto=format&fit=crop&w=1200&q=80",
     after:
       "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
   },

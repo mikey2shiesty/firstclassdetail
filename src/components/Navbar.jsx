@@ -35,9 +35,9 @@ export default function Navbar() {
           : "bg-white/60 backdrop-blur-md border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-[72px] items-center justify-between">
+      <div className="container-x flex h-20 items-center justify-between">
         <Link to="/" className="group inline-flex items-center" aria-label="First Class Detail home">
-          <Logo className="h-10" />
+          <Logo className="h-12 md:h-14" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -106,7 +106,7 @@ export default function Navbar() {
               className="absolute inset-y-0 right-0 flex w-full max-w-sm flex-col bg-white shadow-elevated"
             >
               <div className="flex items-center justify-between border-b border-navy/5 p-5">
-                <Logo className="h-9" />
+                <Logo className="h-11" />
                 <button
                   className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-navy/10 text-navy"
                   aria-label="Close menu"
