@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
-import Logo from "./Logo";
 import { BRAND } from "../lib/data";
 
 const InstagramIcon = (props) => (
@@ -24,8 +23,7 @@ export default function Footer() {
       <div className="absolute inset-x-0 top-0 h-px bg-gold-line" />
       <div className="container-x relative grid gap-12 py-20 md:grid-cols-12">
         <div className="md:col-span-5">
-          <Logo variant="light" className="h-16" />
-          <p className="mt-6 max-w-sm text-sm leading-relaxed text-white/65">
+          <p className="max-w-sm text-sm leading-relaxed text-white/65">
             Perth's premium mobile car detailing service. Police-cleared
             operators, GPS-tracked vans, fully insured. We come to your home,
             office or anywhere across the metro.

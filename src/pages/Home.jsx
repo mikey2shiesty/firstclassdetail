@@ -12,7 +12,6 @@ import {
   CreditCard,
   Quote,
 } from "lucide-react";
-import Logo from "../components/Logo";
 import Reveal from "../components/Reveal";
 import AnimatedCounter from "../components/AnimatedCounter";
 import GoldDivider from "../components/GoldDivider";
@@ -80,13 +79,6 @@ export default function Home() {
             transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="max-w-3xl"
           >
-            <div className="mb-6 inline-flex items-center gap-2">
-              <Logo variant="light" className="h-20 md:h-24" />
-            </div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-gold backdrop-blur">
-              <span className="h-1.5 w-1.5 rounded-full bg-gold" />
-              PERTH · WESTERN AUSTRALIA
-            </div>
             <h1 className="text-balance font-display text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
               Premium Mobile <span className="text-gold">Car Detailing</span>
               <br className="hidden sm:block" /> — We Come To You.
