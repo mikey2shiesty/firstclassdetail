@@ -35,9 +35,9 @@ export default function Navbar() {
           : "bg-white/60 backdrop-blur-md border-b border-transparent"
       }`}
     >
-      <div className="container-x flex h-20 items-center justify-between">
+      <div className="container-x flex h-24 items-center justify-between">
         <Link to="/" className="group inline-flex items-center" aria-label="First Class Detail home">
-          <Logo className="h-12 md:h-14" />
+          <Logo className="h-14 md:h-16" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">

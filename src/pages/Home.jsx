@@ -81,7 +81,7 @@ export default function Home() {
             className="max-w-3xl"
           >
             <div className="mb-6 inline-flex items-center gap-2">
-              <Logo variant="light" className="h-12" />
+              <Logo variant="light" className="h-20 md:h-24" />
             </div>
             <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.04] px-4 py-1.5 text-xs font-semibold tracking-[0.2em] text-gold backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-gold" />
