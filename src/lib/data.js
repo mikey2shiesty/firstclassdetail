@@ -45,7 +45,7 @@ export const SERVICES = [
     id: "full",
     name: "Full Detail",
     price: 220,
-    duration: "~2.5 hours",
+    duration: "~3 hours",
     tagline: "Everything in the Mini Detail, plus a deeper clean.",
     icon: Wand2,
     badge: "Most Popular",
