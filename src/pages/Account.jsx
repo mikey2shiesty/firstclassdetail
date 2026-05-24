@@ -23,7 +23,7 @@ import { useToast } from "../lib/ToastProvider";
 const PROFILE = {
   name: "Olivia Reid",
   suburb: "Cottesloe, WA",
-  memberSince: "Jan 2024",
+  memberSince: "Jan 2027",
   loyalty: 3,
   loyaltyMax: 5,
   points: 1240,
