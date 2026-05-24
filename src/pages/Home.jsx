@@ -36,25 +36,25 @@ const HOW_STEPS = [
   {
     icon: Car,
     title: "We Come To You",
-    body: "GPS-tracked, insured, fully self-contained. Home or office.",
+    body: "GPS-tracked vans, fully self-contained. Home or office.",
   },
   {
     icon: Sparkles,
     title: "Professional Detail",
-    body: "Police-cleared operators, premium products, concours finish.",
+    body: "Police-cleared operators using premium products for a spotless finish.",
   },
   {
     icon: CreditCard,
-    title: "Pay & Review",
-    body: "Square tap-and-go on completion. Drop us a quick review.",
+    title: "Pay on Completion",
+    body: "20% deposit at booking. Balance on completion via Square tap-and-go.",
   },
 ];
 
 const TRUST = [
-  { icon: ShieldCheck, label: "Police Cleared Operators" },
-  { icon: MapPinned, label: "GPS Tracked Vans" },
-  { icon: BadgeCheck, label: "Fully Insured · $20M Public Liability" },
-  { icon: Star, label: "5-Star Rated · 600+ Reviews" },
+  { icon: ShieldCheck, label: "Police-Cleared Operators" },
+  { icon: Sparkles, label: "We Bring Our Own Water & Power" },
+  { icon: BadgeCheck, label: "Before-And-After Photos On Every Job" },
+  { icon: MapPinned, label: "3 Zones Across The Perth Metro" },
 ];
 
 export default function Home() {
@@ -84,9 +84,9 @@ export default function Home() {
               <br className="hidden sm:block" /> — We Come To You.
             </h1>
             <p className="mt-6 max-w-xl text-base leading-relaxed text-white/75 md:text-lg">
-              Concours-level finishes by police-cleared, GPS-tracked operators.
-              From a 60-minute mini detail to a full clay-bar and machine
-              polish — booked in under a minute.
+              Professional interior-and-exterior detailing by police-cleared,
+              GPS-tracked operators. From a 90-minute mini detail to a full
+              3-hour interior-and-exterior detail — booked in under a minute.
             </p>
 
             <div className="mt-8 flex flex-wrap items-center gap-3">
@@ -104,26 +104,18 @@ export default function Home() {
 
             <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm text-white/65">
               <div className="flex items-center gap-2">
-                <div className="flex">
-                  {[0, 1, 2, 3, 4].map((i) => (
-                    <Star
-                      key={i}
-                      className="h-4 w-4 fill-gold text-gold"
-                      strokeWidth={0}
-                    />
-                  ))}
-                </div>
-                <span>5.0 · 600+ Perth reviews</span>
-              </div>
-              <div className="hidden h-4 w-px bg-white/15 sm:block" />
-              <div className="flex items-center gap-2">
                 <ShieldCheck className="h-4 w-4 text-gold" /> Police-cleared
                 operators
               </div>
               <div className="hidden h-4 w-px bg-white/15 sm:block" />
               <div className="flex items-center gap-2">
+                <Sparkles className="h-4 w-4 text-gold" /> We bring our own
+                water & power
+              </div>
+              <div className="hidden h-4 w-px bg-white/15 sm:block" />
+              <div className="flex items-center gap-2">
                 <MapPinned className="h-4 w-4 text-gold" /> 3 zones across the
-                metro
+                Perth metro
               </div>
             </div>
           </motion.div>
@@ -166,7 +158,7 @@ export default function Home() {
         <Reveal className="mx-auto max-w-2xl text-center">
           <div className="eyebrow">Our Services</div>
           <h2 className="mt-3 font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl">
-            Three tiers. <span className="text-gold">One standard.</span>
+            Two services. <span className="text-gold">One standard.</span>
           </h2>
           <p className="mt-4 text-base text-navy/65 md:text-lg">
             Every detail is performed by a police-cleared operator using
@@ -175,7 +167,7 @@ export default function Home() {
           <GoldDivider className="mt-8" />
         </Reveal>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3 md:gap-8">
+        <div className="mt-12 grid gap-6 md:mx-auto md:max-w-4xl md:grid-cols-2 md:gap-8">
           {SERVICES.map((s, i) => {
             const Icon = s.icon;
             return (
@@ -404,7 +396,7 @@ export default function Home() {
                         <span className="text-navy/65">{z.region}</span>
                       </div>
                       <div className="text-xs text-navy/55">
-                        Lead operator · {z.lead}
+                        Lead operator · {z.lead} · 15km radius
                       </div>
                     </div>
                   </div>
@@ -450,11 +442,12 @@ export default function Home() {
                 <h2 className="mt-3 font-display text-3xl font-semibold tracking-tight md:text-4xl">
                   Book your first detail today.
                   <br />
-                  <span className="text-gold">Pay on completion.</span>
+                  <span className="text-gold">20% deposit secures your slot.</span>
                 </h2>
                 <p className="mt-4 max-w-md text-sm text-white/70">
-                  Square tap-and-go on the day. No deposit. No commitment. Just
-                  a flawless car when we're done.
+                  Pay a 20% deposit at booking to lock in the time. Balance is
+                  paid on completion via Square tap-and-go. 10% off your 5th
+                  completed detail.
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-3 md:justify-end">

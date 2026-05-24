@@ -3,9 +3,9 @@ import { ZONES } from "../lib/data";
 
 // Stylized Perth metro graphic — abstract illustration, not a real map.
 const PINS = {
-  cockburn: { x: 360, y: 470, label: "Cockburn", region: "South" },
-  bentley: { x: 470, y: 350, label: "Bentley", region: "Central" },
-  morley: { x: 530, y: 215, label: "Morley", region: "North" },
+  cockburn: { x: 360, y: 470, label: "Cockburn", region: "South · 15km" },
+  bentley: { x: 470, y: 350, label: "Bentley", region: "Central · 15km" },
+  morley: { x: 530, y: 215, label: "Morley", region: "North · 15km" },
 };
 
 export default function PerthZoneMap() {

@@ -1,11 +1,9 @@
 import {
   Sparkles,
   Wand2,
-  Crown,
   ShieldCheck,
   MapPin,
-  Star,
-  Clock,
+  Trophy,
 } from "lucide-react";
 
 export const BRAND = {
@@ -24,62 +22,47 @@ export const SERVICES = [
     id: "mini",
     name: "Mini Detail",
     price: 120,
-    duration: "~1 hour",
-    tagline: "Quick refresh, showroom shine.",
+    duration: "~1.5 hours",
+    tagline: "A regular maintenance clean, inside and out.",
     icon: Sparkles,
     badge: "Most Affordable",
     color: "from-navy-50 to-white",
     accent: "navy",
     bestFor:
-      "Regular maintenance, Bentley zone budget-conscious customers.",
+      "Regular maintenance — a quick refresh between full details.",
     includes: [
-      "Quick exterior wash and dry",
-      "Window clean inside and out",
-      "Tyre shine and rim wipe",
-      "Interior vacuum",
-      "Dashboard wipe down",
+      "Exterior foam wash and rinse",
+      "Hand wash of all body panels",
+      "Wheel and tyre clean + tyre shine",
+      "Exterior windows, streak-free",
+      "Quick vacuum of seats, carpets and mats",
+      "Wipe-down of dashboard, console and interior surfaces",
+      "Interior windows cleaned",
+      "Light deodorising and disinfecting finish",
     ],
   },
   {
     id: "full",
     name: "Full Detail",
     price: 220,
-    duration: "~2 hours",
-    tagline: "The signature First Class clean.",
+    duration: "~3 hours",
+    tagline: "Everything in the Mini Detail, plus a deeper clean.",
     icon: Wand2,
     badge: "Most Popular",
     color: "from-gold-50 to-white",
     accent: "gold",
     popular: true,
-    bestFor: "Most customers — our most popular service.",
+    bestFor:
+      "Most customers — the deep clean inside and out, recommended every 2–3 months.",
     includes: [
-      "Everything in Mini",
-      "Full interior deep clean — seats, door pockets, cup holders, floor mats",
-      "Glass cleaner on all interior windows",
-      "Dashboard and trim dressing",
-      "Odour eliminator spray",
-      "Wheel and rim full clean",
-      "Paint sealant spray finish",
-    ],
-  },
-  {
-    id: "premium",
-    name: "Premium Detail",
-    price: 320,
-    duration: "3 — 4 hours",
-    tagline: "Concours-level finish, by appointment.",
-    icon: Crown,
-    badge: "Flagship",
-    color: "from-navy-50 to-gold-50",
-    accent: "gold",
-    bestFor: "Car enthusiasts, special occasions, vehicle sale prep.",
-    includes: [
-      "Everything in Full",
-      "Machine polish with dual-action polisher",
-      "Paint decontamination and clay bar treatment",
-      "Professional grade paint sealant and protective coating",
-      "Scratch and swirl mark removal",
-      "Scented finish — choose from 5 fragrances",
+      "Everything in the Mini Detail",
+      "Thorough interior vacuum and detailing of all surfaces",
+      "Deep clean of seats, carpets, door trims and hard surfaces",
+      "Detailed cleaning around vents, cupholders and tight areas",
+      "Spray wax and paint sealant applied to all exterior panels",
+      "Detailed exterior finishing and drying",
+      "Bug, grime and heavier dirt removal",
+      "Trim wipe-down and finishing touches",
     ],
   },
 ];
@@ -89,6 +72,7 @@ export const ZONES = [
     id: "cockburn",
     name: "Cockburn",
     region: "South Perth",
+    radius: "15km",
     operator: {
       name: "Michael",
       avatar:
@@ -104,6 +88,7 @@ export const ZONES = [
     id: "morley",
     name: "Morley",
     region: "North Perth",
+    radius: "15km",
     operator: {
       name: "Seamus",
       avatar:
@@ -119,6 +104,7 @@ export const ZONES = [
     id: "bentley",
     name: "Bentley",
     region: "Central Perth",
+    radius: "15km",
     operator: {
       name: "AC",
       avatar:
@@ -140,14 +126,6 @@ export const TIME_SLOTS = [
   { id: "1500", label: "3:00 pm" },
 ];
 
-export const FRAGRANCES = [
-  { id: "linen", emoji: "🌿", name: "Fresh Linen" },
-  { id: "citrus", emoji: "🍊", name: "Citrus Burst" },
-  { id: "floral", emoji: "🌸", name: "Floral Bloom" },
-  { id: "cedar", emoji: "🌲", name: "Cedar & Pine" },
-  { id: "newcar", emoji: "☁️", name: "New Car" },
-];
-
 export const TESTIMONIALS = [
   {
     name: "Olivia R.",
@@ -163,7 +141,7 @@ export const TESTIMONIALS = [
     suburb: "South Perth",
     rating: 5,
     quote:
-      "Booked the Premium before selling my Audi. The clay bar and machine polish results were unreal — sold the car for $1,800 over asking.",
+      "Booked the Full Detail before selling my Audi. Inside and out came up showroom-fresh — made the listing photos pop. Worth every dollar.",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=facearea&w=200&h=200&q=80&facepad=3",
   },
@@ -179,10 +157,10 @@ export const TESTIMONIALS = [
 ];
 
 export const STATS = [
-  { value: 2400, suffix: "+", label: "WA Registered Vehicles Served", icon: ShieldCheck },
   { value: 3, suffix: "", label: "Zones Across Perth", icon: MapPin },
-  { value: 5, suffix: "★", label: "Customer Rated", icon: Star },
-  { value: 60, suffix: "min", label: "Service Minimum", icon: Clock },
+  { value: 2, suffix: "", label: "Service Packages", icon: Sparkles },
+  { value: 20, suffix: "%", label: "Deposit Secures Slot", icon: ShieldCheck },
+  { value: 10, suffix: "%", label: "Off Your 5th Booking", icon: Trophy },
 ];
 
 export const HERO_IMAGE =
@@ -199,10 +177,10 @@ export const MOCK_HISTORY = [
   {
     id: "FCD-2487",
     date: "2026-04-12",
-    service: "Premium Detail",
+    service: "Full Detail",
     operator: "Michael",
     zone: "Cockburn",
-    price: 320,
+    price: 220,
     status: "Completed",
     before:
       "https://images.unsplash.com/photo-1518152006812-edab29b069ac?auto=format&fit=crop&w=1200&q=80",

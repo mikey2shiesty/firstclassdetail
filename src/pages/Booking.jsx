@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { useForm } from "react-hook-form";
@@ -6,10 +6,7 @@ import {
   ArrowLeft,
   ArrowRight,
   Check,
-  Clock,
   Sparkles,
-  Crown,
-  Wand2,
   ShieldCheck,
   BadgeCheck,
   Star,
@@ -24,22 +21,15 @@ import Reveal from "../components/Reveal";
 import Calendar from "../components/Calendar";
 import { useBooking } from "../lib/BookingContext";
 import { useToast } from "../lib/ToastProvider";
-import { SERVICES, ZONES, TIME_SLOTS, FRAGRANCES } from "../lib/data";
+import { SERVICES, ZONES, TIME_SLOTS } from "../lib/data";
 
-// helper to determine which steps are visible
-function getSteps(serviceId) {
-  const base = ["service", "zone", "datetime", "details"];
-  if (serviceId === "premium") base.push("fragrance");
-  base.push("confirm");
-  return base;
-}
+const STEPS = ["service", "zone", "datetime", "details", "confirm"];
 
 const STEP_META = {
   service: { label: "Service" },
   zone: { label: "Zone & Operator" },
   datetime: { label: "Date & Time" },
   details: { label: "Your Details" },
-  fragrance: { label: "Scented Finish" },
   confirm: { label: "Confirm & Pay" },
 };
 
@@ -67,10 +57,7 @@ export default function Booking() {
     if (sid && !booking.serviceId) update({ serviceId: sid });
   }, [location.state, booking.serviceId, update]);
 
-  const steps = useMemo(
-    () => getSteps(booking.serviceId),
-    [booking.serviceId],
-  );
+  const steps = STEPS;
   const [stepIdx, setStepIdx] = useState(0);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(null);
@@ -88,7 +75,6 @@ export default function Booking() {
       `${SERVICES.find((s) => s.id === id).name} selected`,
       { title: "Service selected!" },
     );
-    // Re-derive steps if Premium gets added/removed; ensure step index stays valid
     setTimeout(() => setStepIdx(1), 250);
   }
   function pickZone(id) {
@@ -101,13 +87,6 @@ export default function Booking() {
   }
   function pickTime(t) {
     update({ time: t });
-  }
-  function pickFragrance(id) {
-    update({ fragranceId: id });
-    toast.success(
-      `${FRAGRANCES.find((f) => f.id === id).name} chosen`,
-      { title: "Scent locked in" },
-    );
   }
 
   async function submit() {
@@ -125,7 +104,6 @@ export default function Booking() {
 
   const service = SERVICES.find((s) => s.id === booking.serviceId);
   const zone = ZONES.find((z) => z.id === booking.zoneId);
-  const fragrance = FRAGRANCES.find((f) => f.id === booking.fragranceId);
 
   const canNext = (() => {
     switch (step) {
@@ -143,8 +121,6 @@ export default function Booking() {
           !!booking.details.address &&
           !!booking.details.vehicle
         );
-      case "fragrance":
-        return !!booking.fragranceId;
       case "confirm":
         return true;
       default:
@@ -159,7 +135,6 @@ export default function Booking() {
         service={service}
         zone={zone}
         booking={booking}
-        fragrance={fragrance}
         onAnother={() => {
           reset();
           setSuccess(null);
@@ -221,18 +196,11 @@ export default function Booking() {
                     update={updateDetails}
                   />
                 )}
-                {step === "fragrance" && (
-                  <StepFragrance
-                    selected={booking.fragranceId}
-                    onPick={pickFragrance}
-                  />
-                )}
                 {step === "confirm" && (
                   <StepConfirm
                     service={service}
                     zone={zone}
                     booking={booking}
-                    fragrance={fragrance}
                     submitting={submitting}
                     onSubmit={submit}
                   />
@@ -286,7 +254,6 @@ export default function Booking() {
               service={service}
               zone={zone}
               booking={booking}
-              fragrance={fragrance}
             />
           </aside>
         </div>
@@ -693,47 +660,9 @@ const Field = ({ label, error, ...rest }) => (
   </div>
 );
 
-function StepFragrance({ selected, onPick }) {
-  return (
-    <div>
-      <h2 className="font-display text-2xl font-semibold tracking-tight text-navy md:text-3xl">
-        Choose your scent
-      </h2>
-      <p className="mt-2 text-sm text-navy/65">
-        Premium details finish with a long-lasting scent of your choosing.
-      </p>
-      <div className="mt-6 grid gap-3 sm:grid-cols-3 md:grid-cols-5">
-        {FRAGRANCES.map((f) => {
-          const isSelected = selected === f.id;
-          return (
-            <button
-              key={f.id}
-              type="button"
-              onClick={() => onPick(f.id)}
-              className={`group flex flex-col items-center rounded-2xl border bg-white p-5 shadow-soft transition-all hover:-translate-y-1 hover:shadow-elevated ${
-                isSelected
-                  ? "border-gold ring-2 ring-gold/30"
-                  : "border-navy/5 hover:border-gold/40"
-              }`}
-            >
-              <span className="text-4xl">{f.emoji}</span>
-              <span className="mt-3 text-sm font-semibold text-navy">
-                {f.name}
-              </span>
-              {isSelected && (
-                <span className="mt-3 inline-flex items-center gap-1 text-[11px] font-bold uppercase tracking-[0.18em] text-gold-700">
-                  <Check className="h-3 w-3" strokeWidth={3} /> Selected
-                </span>
-              )}
-            </button>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function StepConfirm({ service, zone, booking, fragrance, submitting }) {
+function StepConfirm({ service, zone, booking, submitting }) {
+  const deposit = service ? Math.round(service.price * 0.2) : 0;
+  const balance = service ? service.price - deposit : 0;
   return (
     <div>
       <h2 className="font-display text-2xl font-semibold tracking-tight text-navy md:text-3xl">
@@ -764,12 +693,6 @@ function StepConfirm({ service, zone, booking, fragrance, submitting }) {
             }
             sub={booking.time ? prettyTime(booking.time) : ""}
           />
-          {fragrance && (
-            <SummaryRow
-              label="Scent"
-              value={`${fragrance.emoji} ${fragrance.name}`}
-            />
-          )}
           <SummaryRow
             label="Customer"
             value={booking.details.name || "—"}
@@ -789,17 +712,29 @@ function StepConfirm({ service, zone, booking, fragrance, submitting }) {
           )}
         </div>
 
-        <div className="mt-6 flex flex-wrap items-center gap-2 rounded-2xl border border-gold/30 bg-gold/5 p-4 text-sm text-navy/85">
-          <CreditCard className="h-4 w-4 text-gold" />
-          <span className="font-semibold">Pay on completion</span>
-          <span className="text-navy/55">·</span>
-          <span>Square tap-and-go on the day. No deposit required.</span>
+        <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/5 p-4 text-sm text-navy/85">
+          <div className="flex items-center gap-2">
+            <CreditCard className="h-4 w-4 text-gold" />
+            <span className="font-semibold">20% deposit at booking</span>
+          </div>
+          <div className="mt-1.5 text-xs text-navy/65">
+            We take a 20% deposit today to secure the slot. The balance is paid
+            on completion via Square tap-and-go.
+          </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-between border-t border-navy/5 pt-6">
-          <div className="text-sm font-medium text-navy/65">Total</div>
-          <div className="font-display text-3xl font-semibold tracking-tight text-navy">
-            ${service?.price ?? 0}
+        <div className="mt-6 space-y-2 border-t border-navy/5 pt-6 text-sm">
+          <div className="flex items-center justify-between text-navy/65">
+            <span>Service total</span>
+            <span>${service?.price ?? 0}</span>
+          </div>
+          <div className="flex items-center justify-between text-navy/65">
+            <span>Deposit today (20%)</span>
+            <span className="font-semibold text-navy">${deposit}</span>
+          </div>
+          <div className="flex items-center justify-between text-navy/65">
+            <span>Balance on completion</span>
+            <span>${balance}</span>
           </div>
         </div>
       </div>
@@ -826,7 +761,8 @@ function SummaryRow({ label, value, sub }) {
   );
 }
 
-function SummaryCard({ service, zone, booking, fragrance }) {
+function SummaryCard({ service, zone, booking }) {
+  const deposit = service ? Math.round(service.price * 0.2) : 0;
   return (
     <div className="sticky top-24 rounded-2xl border border-navy/5 bg-gradient-to-br from-navy-50/60 via-white to-gold-50 p-6 shadow-soft">
       <div className="eyebrow">Booking Summary</div>
@@ -857,27 +793,26 @@ function SummaryCard({ service, zone, booking, fragrance }) {
               : "Not selected"
           }
         />
-        {fragrance && (
-          <SummaryLine
-            icon={Crown}
-            label="Scent"
-            value={`${fragrance.emoji} ${fragrance.name}`}
-          />
-        )}
       </div>
 
       <div className="mt-5 border-t border-navy/10 pt-5">
         <div className="flex items-center justify-between">
-          <div className="text-sm text-navy/65">Estimated total</div>
+          <div className="text-sm text-navy/65">Service total</div>
           <div className="font-display text-2xl font-semibold text-navy">
             ${service?.price ?? 0}
           </div>
         </div>
+        {service && (
+          <div className="mt-1 flex items-center justify-between text-xs text-navy/55">
+            <span>20% deposit today</span>
+            <span className="font-semibold text-navy/75">${deposit}</span>
+          </div>
+        )}
       </div>
 
       <div className="mt-5 flex items-center gap-2 rounded-xl border border-gold/30 bg-white px-3 py-2.5 text-xs text-navy/75">
         <ShieldCheck className="h-4 w-4 text-gold" />
-        Police-cleared, GPS-tracked, fully insured.
+        Police-cleared and GPS-tracked. We bring water & power.
       </div>
     </div>
   );
@@ -908,9 +843,10 @@ function SuccessView({
   service,
   zone,
   booking,
-  fragrance,
   onAnother,
 }) {
+  const deposit = service ? Math.round(service.price * 0.2) : 0;
+  const balance = service ? service.price - deposit : 0;
   return (
     <section className="container-x py-20 md:py-28">
       <Reveal>
@@ -968,15 +904,15 @@ function SuccessView({
               value={booking.details.address || "—"}
               sub={booking.details.vehicle}
             />
-            {fragrance && (
-              <SummaryRow
-                label="Scent"
-                value={`${fragrance.emoji} ${fragrance.name}`}
-              />
-            )}
             <SummaryRow
-              label="Pay on"
-              value="Completion · Square tap-and-go"
+              label="Deposit"
+              value={`$${deposit} paid (20%)`}
+              sub="Slot secured"
+            />
+            <SummaryRow
+              label="Balance"
+              value={`$${balance} on completion`}
+              sub="Square tap-and-go"
             />
           </div>
 

@@ -139,7 +139,7 @@ export default function Track() {
                 </button>
                 <span>Reference · FCD-2487</span>
                 <span>·</span>
-                <span>Premium Detail · 1:00 pm</span>
+                <span>Full Detail · 1:00 pm</span>
               </div>
             </div>
           </div>

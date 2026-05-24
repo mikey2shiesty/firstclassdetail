@@ -25,8 +25,8 @@ export default function Footer() {
         <div className="md:col-span-5">
           <p className="max-w-sm text-sm leading-relaxed text-white/65">
             Perth's premium mobile car detailing service. Police-cleared
-            operators, GPS-tracked vans, fully insured. We come to your home,
-            office or anywhere across the metro.
+            operators with GPS-tracked vans, self-contained with water and
+            power. We come to your home, office or anywhere across the metro.
           </p>
           <div className="mt-6 flex items-center gap-3">
             <a
@@ -88,7 +88,6 @@ export default function Footer() {
           <div className="flex items-center gap-4">
             <a href="#" className="hover:text-gold">Privacy</a>
             <a href="#" className="hover:text-gold">Terms</a>
-            <a href="#" className="hover:text-gold">Insurance</a>
           </div>
         </div>
       </div>

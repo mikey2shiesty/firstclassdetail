@@ -11,7 +11,7 @@ import {
 } from "lucide-react";
 import Reveal from "../components/Reveal";
 import GoldDivider from "../components/GoldDivider";
-import { SERVICES, FRAGRANCES } from "../lib/data";
+import { SERVICES } from "../lib/data";
 
 export default function Services() {
   const [open, setOpen] = useState("full");
@@ -25,12 +25,13 @@ export default function Services() {
           <div className="md:col-span-8">
             <div className="eyebrow text-gold">Services & Pricing</div>
             <h1 className="mt-3 text-balance font-display text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
-              Three services. <span className="text-gold">Fixed pricing.</span>{" "}
+              Two services. <span className="text-gold">Fixed pricing.</span>{" "}
               Every detail performed by a police-cleared operator.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-relaxed text-white/70 md:text-lg">
-              Tap any tier below to see exactly what's included. Square
-              tap-and-go on completion — no deposit required.
+              Tap a tier below to see exactly what's included. A 20% deposit
+              secures your slot — balance is paid on completion via Square
+              tap-and-go.
             </p>
             <div className="mt-8 flex flex-wrap items-center gap-3">
               <Link to="/book" className="btn-gold">
@@ -53,8 +54,9 @@ export default function Services() {
                 </span>
               </div>
               <p className="mt-3 text-sm leading-relaxed text-white/75">
-                Every operator is police-cleared, ID-verified, GPS-tracked, and
-                insured under our $20M public liability policy.
+                Every operator is police-cleared, ID-verified, and GPS-tracked.
+                We supply our own water and power — all you need is a parking
+                spot.
               </p>
             </div>
           </div>
@@ -106,9 +108,6 @@ export default function Services() {
                         </h3>
                         {s.popular && (
                           <span className="badge-gold">Most Popular</span>
-                        )}
-                        {!s.popular && s.id === "premium" && (
-                          <span className="badge-navy">Flagship</span>
                         )}
                       </div>
                       <p className="mt-1 text-sm text-navy/60 md:text-base">
@@ -164,24 +163,6 @@ export default function Services() {
                                 ))}
                               </ul>
 
-                              {s.id === "premium" && (
-                                <div className="mt-6 rounded-2xl border border-gold/30 bg-gold/5 p-5">
-                                  <div className="text-xs font-bold uppercase tracking-[0.2em] text-gold-700">
-                                    Choose your scent
-                                  </div>
-                                  <div className="mt-3 flex flex-wrap gap-2">
-                                    {FRAGRANCES.map((f) => (
-                                      <span
-                                        key={f.id}
-                                        className="inline-flex items-center gap-1.5 rounded-full bg-white px-3 py-1.5 text-xs font-semibold text-navy shadow-soft ring-1 ring-navy/5"
-                                      >
-                                        <span>{f.emoji}</span>
-                                        {f.name}
-                                      </span>
-                                    ))}
-                                  </div>
-                                </div>
-                              )}
                             </div>
 
                             <div className="md:col-span-5">
@@ -204,9 +185,15 @@ export default function Services() {
                                     </span>
                                   </div>
                                   <div className="flex items-center justify-between text-sm">
-                                    <span className="text-navy/60">Pay on</span>
+                                    <span className="text-navy/60">Deposit</span>
                                     <span className="font-semibold text-navy">
-                                      Completion (Square)
+                                      20% at booking
+                                    </span>
+                                  </div>
+                                  <div className="flex items-center justify-between text-sm">
+                                    <span className="text-navy/60">Balance</span>
+                                    <span className="font-semibold text-navy">
+                                      On completion (Square)
                                     </span>
                                   </div>
                                 </div>
@@ -239,12 +226,12 @@ export default function Services() {
             <div className="md:col-span-7">
               <div className="eyebrow">Not sure which to pick?</div>
               <h3 className="mt-3 font-display text-3xl font-semibold tracking-tight text-navy md:text-4xl">
-                90% of customers choose <span className="text-gold">Full Detail.</span>
+                Most customers choose the <span className="text-gold">Full Detail.</span>
               </h3>
               <p className="mt-3 max-w-xl text-sm text-navy/70 md:text-base">
-                It's the sweet spot — interior deep clean, exterior wash and
-                seal, wheels, glass, and paint protection. Most cars only need
-                a Premium for sale prep or annual treatment.
+                It's the sweet spot — full interior deep clean, exterior wash
+                and seal, wheels, glass and paint protection. Three hours, all
+                included. Mini Detail is best for upkeep between full details.
               </p>
             </div>
             <div className="md:col-span-5">

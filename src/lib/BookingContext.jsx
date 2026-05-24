@@ -24,7 +24,6 @@ const initial = {
     giftRecipient: "",
     giftMessage: "",
   },
-  fragranceId: null,
   reference: null,
 };
 

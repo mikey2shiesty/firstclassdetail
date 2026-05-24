@@ -101,8 +101,8 @@ export default function Account() {
                 It's been 6 weeks since your last detail — time to rebook?
               </div>
               <div className="text-xs text-navy/65">
-                Your last Premium with Michael is showing well. A Mini refresh
-                will keep the protection topped up.
+                Your last Full Detail with Michael is still showing well. A
+                Mini refresh will keep things sharp between full details.
               </div>
             </div>
             <Link to="/book" className="btn-primary">
@@ -122,8 +122,8 @@ export default function Account() {
                 <h2 className="mt-2 font-display text-2xl font-semibold tracking-tight text-navy md:text-3xl">
                   {PROFILE.loyalty} of {PROFILE.loyaltyMax} details completed —{" "}
                   <span className="text-gold">
-                    {PROFILE.loyaltyMax - PROFILE.loyalty} more for your free
-                    discount!
+                    {PROFILE.loyaltyMax - PROFILE.loyalty} more and your next
+                    booking is 10% off.
                   </span>
                 </h2>
               </div>
@@ -179,8 +179,8 @@ export default function Account() {
             </div>
 
             <div className="mt-6 rounded-xl bg-navy-50/40 p-4 text-xs text-navy/65">
-              At 5 completed details, you unlock a complimentary upgrade — your
-              next Mini becomes a Full Detail, on us.
+              Hit 5 completed details and we'll automatically take 10% off your
+              5th booking — no code needed.
             </div>
           </div>
         </Reveal>
